@@ -11,6 +11,8 @@
 		6A0064D72BEA6E8900FC0A02 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0064D62BEA6E8900FC0A02 /* ContentView.swift */; };
 		6A0064D92BEA6E8A00FC0A02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A0064D82BEA6E8A00FC0A02 /* Assets.xcassets */; };
 		6A0064DC2BEA6E8A00FC0A02 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A0064DB2BEA6E8A00FC0A02 /* Preview Assets.xcassets */; };
+		6A91DD992BEBC0B8007681F7 /* Yomogi-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A91DD982BEBC0B8007681F7 /* Yomogi-Regular.ttf */; };
+		6A91DDA02BEBC574007681F7 /* SignikaNegative-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A91DD9F2BEBC574007681F7 /* SignikaNegative-Medium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,9 @@
 		6A0064D62BEA6E8900FC0A02 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6A0064D82BEA6E8A00FC0A02 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A0064DB2BEA6E8A00FC0A02 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6A91DD982BEBC0B8007681F7 /* Yomogi-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Yomogi-Regular.ttf"; sourceTree = "<group>"; };
+		6A91DD9A2BEBC10C007681F7 /* Estudando-Calculadora-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Estudando-Calculadora-Info.plist"; sourceTree = SOURCE_ROOT; };
+		6A91DD9F2BEBC574007681F7 /* SignikaNegative-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SignikaNegative-Medium.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +56,11 @@
 		6A0064D32BEA6E8900FC0A02 /* Estudando Calculadora */ = {
 			isa = PBXGroup;
 			children = (
+				6A91DD9A2BEBC10C007681F7 /* Estudando-Calculadora-Info.plist */,
 				6A0064D42BEA6E8900FC0A02 /* Estudando_CalculadoraApp.swift */,
 				6A0064D62BEA6E8900FC0A02 /* ContentView.swift */,
+				6A91DD9F2BEBC574007681F7 /* SignikaNegative-Medium.ttf */,
+				6A91DD982BEBC0B8007681F7 /* Yomogi-Regular.ttf */,
 				6A0064D82BEA6E8A00FC0A02 /* Assets.xcassets */,
 				6A0064DA2BEA6E8A00FC0A02 /* Preview Content */,
 			);
@@ -126,6 +134,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A0064DC2BEA6E8A00FC0A02 /* Preview Assets.xcassets in Resources */,
+				6A91DDA02BEBC574007681F7 /* SignikaNegative-Medium.ttf in Resources */,
+				6A91DD992BEBC0B8007681F7 /* Yomogi-Regular.ttf in Resources */,
 				6A0064D92BEA6E8A00FC0A02 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +285,7 @@
 				DEVELOPMENT_TEAM = FJ88J69NXX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Estudando-Calculadora-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -304,6 +315,7 @@
 				DEVELOPMENT_TEAM = FJ88J69NXX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Estudando-Calculadora-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

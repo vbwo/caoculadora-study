@@ -14,42 +14,57 @@ struct ContentView: View {
     @State var textoPorte: Int?
     
     var body: some View {
-        VStack(alignment: .leading) {
-            TextModifiers(weight: true,
-                          text: "Olá!",
-                          size: 36,
-                          padding: 20)
-            TextModifiers(weight: false,
-                          text: "Qual a idade do seu cão?",
-                          size: 24,
-                          padding: 16)
-            TextModifiers(weight: false,
-                          text: "Anos",
-                          size: 16,
-                          padding: 0)
-            TextFieldModifiers(placeholder: "Anos", text: $textoAnos)
-            TextModifiers(weight: false,
-                          text: "Meses",
-                          size: 16,
-                          padding: 0)
-            TextFieldModifiers(placeholder: "Meses", text: $textoMeses)
-            TextModifiers(weight: false,
-                          text: "Porte",
-                          size: 16,
-                          padding: 0)
-        } .padding()
-        
-        
-        Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+        VStack{
             ZStack{
-                Rectangle()
-                    .foregroundStyle(.indigo)
-                    .frame(width: 345, height: 50)
-                    .clipShape(.rect(cornerRadius: 12))
-                Text("Cãocular")
+                Image("header")
+                Text("Cãoculadora")
                     .foregroundStyle(.white)
+                    .font(.custom("SignikaNegative-Medium", size: 34))
             }
-        })
+            
+            
+            VStack(alignment: .leading) {
+                TextModifiers(weight: true,
+                              text: "Olá!",
+                              size: 36,
+                              padding: 20)
+                TextModifiers(weight: false,
+                              text: "Qual a idade do seu cão?",
+                              size: 24,
+                              padding: 16)
+                TextModifiers(weight: false,
+                              text: "Anos",
+                              size: 16,
+                              padding: 0)
+                TextFieldModifiers(placeholder: "Anos", text: $textoAnos)
+                TextModifiers(weight: false,
+                              text: "Meses",
+                              size: 16,
+                              padding: 0)
+                TextFieldModifiers(placeholder: "Meses", text: $textoMeses)
+                TextModifiers(weight: false,
+                              text: "Porte",
+                              size: 16,
+                              padding: 0)
+            } .padding()
+            
+            Spacer()
+            
+            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                ZStack{
+                    Rectangle()
+                        .foregroundStyle(.indigo)
+                        .frame(width: 345, height: 50)
+                        .clipShape(.rect(cornerRadius: 12))
+                    Text("Cãocular")
+                        .foregroundStyle(.white)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                }
+            })
+            
+            Spacer()
+            
+        }.ignoresSafeArea()
     }
 }
 
@@ -96,7 +111,6 @@ struct TextFieldModifiers: View {
         .keyboardType(.numberPad)
     }
 }
-
 
 
 #Preview {
