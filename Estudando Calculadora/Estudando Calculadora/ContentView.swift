@@ -11,7 +11,7 @@ struct ContentView: View {
     
     @State var textoAnos: Int?
     @State var textoMeses: Int?
-    @State var textoPorte: Int?
+    @State var result: Int?
     
     var body: some View {
         VStack{
@@ -22,12 +22,11 @@ struct ContentView: View {
                     .font(.custom("SignikaNegative-Medium", size: 34))
             }
             
-            
             VStack(alignment: .leading) {
                 TextModifiers(weight: true,
                               text: "Olá!",
                               size: 36,
-                              padding: 20)
+                              padding: 16)
                 TextModifiers(weight: false,
                               text: "Qual a idade do seu cão?",
                               size: 24,
@@ -50,7 +49,24 @@ struct ContentView: View {
             
             Spacer()
             
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+            if let result {
+                Text ("Seu cachorro tem, em idade humana:")
+                Text("\(result) anos!")
+            } else {
+                Image("dog")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxHeight: 150)
+                    .frame(maxWidth: .infinity)
+            }
+            
+            Spacer()
+            
+            Button(action: {
+                print("cãocular")
+                result = 20
+            },
+                   label: {
                 ZStack{
                     Rectangle()
                         .foregroundStyle(.indigo)
@@ -63,7 +79,6 @@ struct ContentView: View {
             })
             
             Spacer()
-            
         }.ignoresSafeArea()
     }
 }
