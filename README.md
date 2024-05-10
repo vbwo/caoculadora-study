@@ -1,8 +1,5 @@
-# caoculadora-study
-Estudo de programação!
+#Cãoculadora
+Estudo de programação pela Apple Developer Academy | UFPE.
 
---------
-
-## alterações
-Começamos apenas alterando o README.md
-Fazendo um teste de alteração no terminal.
+#Objetivo
+Replicar o aplicativo criado previamente pelos mentores por conta própia. 
