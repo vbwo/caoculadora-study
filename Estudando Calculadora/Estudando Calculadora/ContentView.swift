@@ -12,97 +12,98 @@ struct ContentView: View {
     @State var years: Int?
     @State var months: Int?
     @State var result: Int?
-    
-    let portes = ["Pequeno", "Médio", "Grande"]
-    @State var porte = "Pequeno"
+    @State var portesSelected = Portes.pequeno
     
     var body: some View {
-        ZStack {
-            Color.background
-            VStack{
-                
-                ZStack{
-                    Image("header")
-                    Text("Cãoculadora")
-                        .foregroundStyle(.white)
-                        .font(.custom("SignikaNegative-Medium", size: 34))
-                } .padding(.bottom, -2)
-                
-                VStack(alignment: .leading) {
-                    TextModifiers(weight: true,
-                                  text: "Olá!",
-                                  size: 36,
-                                  padding: 12)
-                    TextModifiers(weight: false,
-                                  text: "Qual a idade do seu cão?",
-                                  size: 24,
-                                  padding: 16)
-                    TextModifiers(weight: false,
-                                  text: "Anos",
-                                  size: 16,
-                                  padding: 0)
-                    TextFieldModifiers(placeholder: "Anos", text: $years)
-                    TextModifiers(weight: false,
-                                  text: "Meses",
-                                  size: 16,
-                                  padding: 0)
-                    TextFieldModifiers(placeholder: "Meses", text: $months)
-                    TextModifiers(weight: false,
-                                  text: "Porte",
-                                  size: 16,
-                                  padding: 0)
-                    
-                    Picker("Portes", selection: $porte) {
-                        ForEach(portes, id: \.self) { cadaPorte in
-                            Text(cadaPorte)
-                        }
-                    } .pickerStyle(.segmented)
-                    
-                } .padding()
-                
-                
-                Spacer()
-                
-                if let result {
-                    VStack (spacing: 20) {
-                        TextModifiers(weight: false,
-                                      text: "Seu cachorro tem, em idade humana:",
-                                      size: 20,
-                                      padding: 0)
-                        TextModifiers(weight: true,
-                                      text: "\(result) anos!",
-                                      size: 36,
-                                      padding: 0)
-                    }
-                } else {
-                    Image("dog")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxHeight: 150)
-                        .frame(maxWidth: .infinity)
-                        .shadow(radius: 5)
-                }
-                
-                Spacer()
-                
-                Button(action: processYears,
-                       label: {
+        NavigationStack {
+            ScrollView {
+                VStack{
                     ZStack{
-                        Rectangle()
-                            .foregroundStyle(.indigo)
-                            .frame(width: 345, height: 50)
-                            .clipShape(.rect(cornerRadius: 12))
-                        
-                        Text("Cãocular")
+                        Image("header")
+                        Text("Cãoculadora")
                             .foregroundStyle(.white)
-                            .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                            .font(.custom("SignikaNegative-Medium", size: 34))
                     }
-                })
+                    
+                    VStack(alignment: .leading) {
+                        TextModifiers(weight: true,
+                                      text: "Olá!",
+                                      size: 36,
+                                      padding: 12)
+                        TextModifiers(weight: false,
+                                      text: "Saiba a idade humana do seu cão!",
+                                      size: 22,
+                                      padding: 16)
+                        TextModifiers(weight: false,
+                                      text: "Quantos anos ele tem?",
+                                      size: 16,
+                                      padding: 0)
+                        TextFieldModifiers(placeholder: "Anos", text: $years)
+                        TextModifiers(weight: false,
+                                      text: "E quantos meses?",
+                                      size: 16,
+                                      padding: 0)
+                        TextFieldModifiers(placeholder: "Meses", text: $months)
+                        TextModifiers(weight: false,
+                                      text: "Qual o porte do seu pet?",
+                                      size: 16,
+                                      padding: 0)
+                        
+                        Picker("Portes", selection: $portesSelected) {
+                            ForEach(Portes.allCases, id:\.self) { porte in
+                                Text(porte.rawValue)
+                            }
+                        }
+                        .pickerStyle(.segmented)
+                        
+                        if let result {
+                            VStack (spacing: 20) {
+                                TextModifiers(weight: false,
+                                              text: "Seu cachorro tem, em idade humana:",
+                                              size: 20,
+                                              padding: 0)
+                                TextModifiers(weight: true,
+                                              text: "\(result) anos!",
+                                              size: 36,
+                                              padding: 0)
+                            }
+                        } else {
+                            Image("dog")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(maxHeight: 120)
+                                .frame(maxWidth: .infinity)
+                                .shadow(radius: 5)
+                                .padding(20)
+                        }
+                        
+                        Spacer()
+                        
+                        Button(action: processYears,
+                               label: {
+                            ZStack {
+                                Rectangle()
+                                    .foregroundStyle(.indigo)
+                                    .frame(width: 345, height: 50)
+                                    .clipShape(.rect(cornerRadius: 12))
+                                
+                                Text("Cãocular")
+                                    .foregroundStyle(.white)
+                                    .fontWeight(.bold)
+                            } .padding(.leading, 8)
+                        })
+                    } .padding()
+                }
+                .background(Color.background)
                 
-                Spacer()
-                
-            }
-        } .ignoresSafeArea()
+            } .background(
+                VStack {
+                    Color.darkindigo
+                    Color.background
+                }
+            )
+            .ignoresSafeArea()
+        }
     }
     
     func processYears() {
@@ -118,16 +119,13 @@ struct ContentView: View {
         }
         
         let multiplicador: Int
-        
-        switch porte {
-        case "Pequeno":
+        switch portesSelected {
+        case .pequeno:
             multiplicador = 6
-        case "Médio":
+        case .medio:
             multiplicador = 7
-        case "Grande":
+        case .grande:
             multiplicador = 8
-        default:
-            multiplicador = 0
         }
         
         result = years * multiplicador + months * multiplicador / 12
@@ -178,12 +176,21 @@ struct TextFieldModifiers: View {
             RoundedRectangle(cornerRadius: 4)
                 .stroke(Color.indigo)
                 .opacity(0.4)
-                
+            
         )
         .padding(.bottom, 20.0)
         
     }
 }
+
+enum Portes: String, CaseIterable {
+    case pequeno = "Pequeno"
+    case medio = "Médio"
+    case grande = "Grande"
+    
+    
+}
+
 
 
 #Preview {
