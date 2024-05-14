@@ -56,17 +56,25 @@ struct ContentView: View {
                         }
                         .pickerStyle(.segmented)
                         
+                        
                         if let result {
-                            VStack (spacing: 20) {
+                            VStack(alignment: .center, spacing: 20) {
+                                Spacer()
                                 TextModifiers(weight: false,
                                               text: "Seu cachorro tem, em idade humana:",
                                               size: 20,
                                               padding: 0)
+                                
                                 TextModifiers(weight: true,
                                               text: "\(result) anos!",
                                               size: 36,
                                               padding: 0)
-                            }
+                                Spacer()
+                            } .frame(maxWidth: .infinity)
+                                .frame(height: 160)
+                                .contentTransition(.numericText())
+                            
+                            
                         } else {
                             Image("dog")
                                 .resizable()
@@ -78,6 +86,7 @@ struct ContentView: View {
                         }
                         
                         Spacer()
+                        
                         
                         Button(action: processYears,
                                label: {
@@ -128,7 +137,9 @@ struct ContentView: View {
             multiplicador = 8
         }
         
-        result = years * multiplicador + months * multiplicador / 12
+        withAnimation{
+            result = years * multiplicador + months * multiplicador / 12
+        }
     }
 }
 
