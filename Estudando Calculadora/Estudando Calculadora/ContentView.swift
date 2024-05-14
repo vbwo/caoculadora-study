@@ -13,6 +13,7 @@ struct ContentView: View {
     @State var months: Int?
     @State var result: Int?
     @State var portesSelected = Portes.pequeno
+    @State var showAlert = false
     
     var body: some View {
         NavigationStack {
@@ -113,12 +114,15 @@ struct ContentView: View {
             )
             .ignoresSafeArea()
         }
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("Campos obrigatórios"), message: Text("Preencha todos os campos para calcular."), dismissButton: .default(Text("OK")))
+               }
     }
     
     func processYears() {
         
         guard let years, let months else {
-            print("Preencha os campos acima para calcular.")
+            showAlert = true
             return
         }
         
